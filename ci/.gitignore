@@ -28,3 +28,4 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 
 template.cache/views*
 application/config/database.php
+./web/*
