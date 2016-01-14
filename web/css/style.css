@@ -1,0 +1,3504 @@
+@charset "utf-8";
+/* ============================================================
+TLX pass styleSheet
+---------------------------------------------------------------
+Version : 1.0
+Author : userstorylab(hi8ar)
+---------------------------------------------------------------
+Last Date Modified : 2015. 12. 22
+============================================================== */
+
+/* webfont */
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+body {
+	font: 14px/1.6 'Noto Sans KR', 'Apple SD Gothic Neo', 나눔고딕, "Nanum Gothic", "맑은 고딕", "Malgun Gothic", Helvetica, Arial, sans-serif;
+	color: #333;
+	background: #fff;
+	font-size: 13px;
+}
+select,
+input,
+textarea,
+button {
+  font: 14px/1.6 'Noto Sans KR', 'Apple SD Gothic Neo', 나눔고딕, "Nanum Gothic", "맑은 고딕", "Malgun Gothic", Helvetica, Arial, sans-serif;
+  color: #444;
+  font-size: 100%;
+  margin: 0;
+}
+
+
+/* ---------------------------
+=Common
+--------------------------- */
+
+a {
+   color: #333;
+   text-decoration: none;
+}
+ul {
+  margin: 0;
+  padding: 0;
+}
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.help {
+  font-size: 12px;
+  letter-spacing: -1px;
+  color: #737373;
+}
+.btn_basic {
+  padding: 8px;
+  color: #00bff0;
+  border: 1px solid #00bff0;
+  border-radius: 3px;
+  width: 80%;
+  text-align: center;
+  display: inline-block;
+  text-decoration: none;
+}
+.btn_basic:hover {
+  background: #00bff0;
+  color: #fff;
+}
+
+/* bootstrap overwrite */
+.btn {
+  border-radius: 2px;
+}
+.btn-primary {
+  background-color: #00c0f0;
+  border-color: #0eaad1;
+}
+.form-control,
+.form-group-sm .form-control,
+.form-group-lg .form-control {
+  border-radius: 2px;
+  box-shadow: none;
+}
+.help-block {
+  letter-spacing: -1px;
+  font-size: 12px;
+}
+.help-block span {
+  display: inline-block;
+}
+
+/* loading spinner */
+.spinnerWrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding-top: 200px;
+  background: rgba(13,31,53,0.7);
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+}
+.loader {
+  margin: 0 auto;
+  font-size: 10px;
+  position: relative;
+  text-indent: -9999em;
+  border-top: 1.1em solid rgba(255, 255, 255, 0.2);
+  border-right: 1.1em solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1.1em solid rgba(255, 255, 255, 0.2);
+  border-left: 1.1em solid #ffffff;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation: load8 1.1s infinite linear;
+  animation: load8 1.1s infinite linear;
+}
+.loader,
+.loader:after {
+  border-radius: 50%;
+  width: 10em;
+  height: 10em;
+}
+@-webkit-keyframes load8 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes load8 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+
+
+
+/* ---------------------------
+=layout
+--------------------------- */
+html {
+  height: 100%;
+}
+.wrap {
+  background: #fff;
+}
+
+
+
+/* ---------------------------
+=GNB
+--------------------------- */
+.snsTopLinks {
+  background: #00bff0;
+  background: rgba(0,191,240,0.8);
+  color: #fff;
+  height: 40px;
+  font-size: 12px;
+  padding: 10px 25px 0;
+  overflow: hidden;
+  position: relative;
+  z-index: 100;
+}
+.snsTopLinks i {
+  font-size: 16px;
+  vertical-align: middle;
+}
+.snsTopLinks .sns {
+  float: right;
+  color: #fff;
+  font-size: 16px;
+}
+
+.gnb {
+  padding: 25px 20px 0;
+  height: 80px;
+  background: #fff;
+  background: rgba(255,255,255,0.9);
+  border-bottom: 1px solid #f6f6f6;
+  /*
+  background: #fff;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  */
+  position: relative;
+  z-index: 100;
+  width: 100%;
+  transition: all 0.3s ease 0s;
+}
+.gnb.collapsed {
+  height: 50px;
+  padding-top: 13px;
+  padding-left: 10px;
+  position: fixed;
+  top: 0;
+  background: #0e2036;
+  background: rgba(13,31,53,0.9);
+  border-color: #0e2036;
+}
+.gnb.collapsed h1.logo img {
+  width: 125px;
+  height: 23px;
+}
+.gnb.collapsed .menu li a {  
+  padding: 4px 10px;
+  font-size: 13px;
+}
+
+
+h1.logo {
+  float: left;
+  margin: 0;
+}
+h1.logo .forMobile {
+  display: none;
+}
+h1.logo img {
+  width: 175px;
+  height: 32px;
+  display: block;
+}
+
+.menu {
+  float: right;
+  margin: -3px 0 0;
+  padding: 0;
+}
+.menu li {
+  float: left;
+  list-style: none;
+}
+.menu li.forMobile {
+  display: none;
+}
+.menu li a {
+  display: block;
+  padding: 8px 15px;
+  margin-right: 4px;
+  color: #00bff0;
+  border-radius: 2px;
+  border: 1px solid transparent;
+  letter-spacing: -1px;
+}
+.menu li a.current {
+  border: 1px solid #00bff0;
+}
+.menu li a.accent {
+  background-color: #00bff0;
+  color: #fff;
+}
+.menu li a:hover {
+  border: 1px solid #00bff0;
+  text-decoration: none;
+}
+.menu li.userProfile a {
+  padding: 0 15px;
+}
+.menu li.userProfile a:hover {
+  background: #00c0f0;
+  color: #fff;
+}
+.menu li.userProfile img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+.gnb.collapsed .menu li.userProfile img {
+  width: 24px;
+  height: 24px;
+}
+
+
+/* hamberger Menu (mobile Open Menu) */
+.nav-toggle {
+  display: none;
+  position: absolute;
+  top: 30px;
+  right: 20px;
+  z-index: 999999;
+  padding: 10px 35px 16px 0px;
+  cursor: pointer;
+}
+.collapsed .nav-toggle {
+  top: 13px;
+  right: 13px;
+}
+.nav-toggle:focus {
+  outline: none;
+}
+.nav-toggle span, .nav-toggle span:before, .nav-toggle span:after {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 34px;
+  height: 5px;
+  border-radius: 4px;
+  background: #00BFF0;
+  cursor: pointer;
+}
+.nav-toggle span:before {
+  top: -10px;
+}
+.nav-toggle span:after {
+  bottom: -10px;
+}
+.nav-toggle span, .nav-toggle span:before, .nav-toggle span:after {
+  -webkit-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+}
+.nav-toggle.active span {
+  background-color: transparent;
+}
+.nav-toggle.active span:before, .nav-toggle.active span:after {
+  top: 0;
+}
+.nav-toggle.active span:before {
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.nav-toggle.active span:after {
+  top: 10px;
+  -webkit-transform: translateY(-10px) rotate(-45deg);
+  -ms-transform: translateY(-10px) rotate(-45deg);
+  transform: translateY(-10px) rotate(-45deg);
+}
+
+
+
+
+/* ---------------------------
+=header subAlt 
+--------------------------- */
+.subAlt {
+  text-align: center;
+  padding: 25px 0;
+  background: #00c0f0;
+}
+.subAlt h1 {
+  margin: 0;
+}
+.subAlt h1 img {
+  width: 172px;
+  height: 32px;
+  display: block;
+  margin: 0 auto;
+}
+.content {
+  padding-bottom: 50px;
+  margin: 0 auto;
+  min-height: 600px;
+  float: none !important; /* for ie8 */
+}
+.subWrap {
+  padding-top: 0 !important;
+}
+.subWrap .page-header {
+  text-align: center;
+}
+.subWrap .page-header h2 {
+}
+.subWrap .page-header h2 small {
+}
+
+
+
+
+/* ---------------------------
+=footer
+--------------------------- */
+.footer {
+  background: #0d1f35;
+  color: #fff;
+  padding: 30px;
+  font-size: 12px;
+}
+.footer .inner {
+  border-bottom: 1px solid #253b57;
+  padding: 0 0 30px;
+}
+.footer .logo img {
+  width: 127px;
+}
+.footer .copyrights {
+  margin: 10px 0;
+  opacity: 0.6; 
+}
+.footer .companyInfo {
+  margin: 10px 0;
+  opacity: 0.4;
+}
+.footer .companyInfo small {
+  opacity: 0.3;
+  margin: 0 5px;
+}
+.footer .companyInfo a {
+  margin: 0 5px;
+}
+.footer a {
+  color: #00bff0;
+}
+.footer .util {
+  overflow: hidden;
+}
+.footer .util li {
+  float: left;
+  margin-right: 20px;
+}
+.footer .util li a {
+  display: block;
+}
+.customerCenter .goChat {
+  font-size: 16px;
+  font-weight: 400; 
+  letter-spacing: -1px;
+  display: inline-block;
+  margin: 5px 0;
+  padding: 5px 15px;
+  background: rgba(0,0,0,0.2);
+  border-radius: 4px;
+  text-decoration: none;
+}
+.customerCenter .goChat:hover {
+  background: #fff;
+}
+.customerCenter b {
+  font-size: 14px;
+  display: block;
+  font-weight: 400;
+}
+.customerCenter i {
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 200;
+  color: #00bff0;
+  margin-right: 4px;
+}
+.customerCenter span {
+  display: block;
+  opacity: 0.5;
+}
+
+/* sub page 흰 배경 footer */
+.footerAlt {
+  background: #fff;
+  color: #0e2036;
+  text-align: center;
+}
+.footerAlt .inner {
+  border: 0 none;
+}
+
+
+
+
+/* ---------------------------
+=main
+--------------------------- */
+
+.mastHead {
+  background: #0d1f35 url(../images/bg/shutterstock_102171865.jpg) no-repeat center top fixed;
+  background-size: cover;
+  height: 600px;
+  position: relative;
+  margin-top: -120px
+}
+.mastHead .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(13,31,53,0.6);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99133153,endColorstr=#99133153); 
+  zoom: 1;
+  padding-top: 400px;
+}
+.findCenter {
+  display: block;
+  float:none;
+  background: #fff;
+  padding: 10px;
+
+  margin: 0 auto 0;
+  /*
+  width: 50%;
+  max-width: 370px;
+  min-width: 200px;
+  */
+  width: 220px;
+  text-align: center;
+  border-radius: 50px;
+  color: #11bcf4;
+  font-size: 14px;
+  letter-spacing: -1px;
+  transition: all 0.3s ease 0s;
+}
+.findCenter:hover {
+  background: #00c0f0;
+  color: #fff;
+  text-decoration: none;
+}
+.findCenter i {
+  font-size: 16px;
+  margin-right: 5px;
+}
+
+.about {
+  padding: 50px 0;
+}
+.cardWrap {
+  margin: 0 auto !important;
+  float: none !important;
+  /* important 는 iu8 지원을 위해 */
+}
+h2.mainSlogan {
+  text-align: center;
+  font-size: 56px;
+  letter-spacing: -2px;
+  color: #0d1f35;
+  font-weight: 200;
+  margin-bottom: 80px;
+}
+h2.mainSlogan span {
+  display: inline-block;
+}
+h2.mainSlogan small {
+  display: block;
+  font-size: 24px;
+  font-weight: 300;
+  color: #11bcf4;
+  margin-bottom: 10px;
+}
+
+.card {
+  min-height: 320px;
+  background: #11bcf4;
+  border-radius: 6px;
+  border: 2px solid #00bff0;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  top: -28px;
+}
+.card .top small {
+  font-size: 13px;
+  letter-spacing: -1px;
+}
+.card .top {
+  height: 120px;
+  background: #fff;
+  color: #11bcf4;
+  border-radius: 6px 6px 0 0;
+  font-size: 14px;
+  padding: 10px;
+}
+.card .top .dl {
+  float: left;
+}
+.card .top .dr {
+  float: right;
+}
+.card .bottom img {
+  display: block;
+  width: 220px;
+  height: 41px;
+  margin: 20px auto;
+}
+.card .bottom small {
+  display: block;
+  color: #fff;
+}
+.cardshadow {
+  background: #c5eafc;
+  padding: 8px;
+  border-radius: 4px;
+  height: 310px;
+}
+
+.lead {
+  text-align: center;
+  margin-top: 30px;
+}
+.lead h3 {
+  color: #0d1f35;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 1.6;
+}
+.lead h3 b {
+  font-size: 40px;
+  font-weight: 200;
+  display: block;
+}
+
+.lead h3 span {
+  display: inline-block;
+  letter-spacing: -1px;
+}
+
+.statCntWrap {
+  margin: 80px 0;
+}
+.statCnt {
+  text-align: center;
+  font-size: 24px;
+  color: #0d1f35;
+  letter-spacing: -1px;
+}
+.statCnt strong {
+  font-weight: 200;
+}
+.statCnt b {
+  font-size: 56px;
+  font-weight: 200;
+  letter-spacing: 0;
+  display: block;
+}
+.statCnt span {
+  font-weight: 300;
+  color: #0d64a8;
+}
+
+
+/* illust */
+.illustWrap {
+  background: #fafafa;
+  padding: 20px 0 0;
+}
+.illustWrap img {
+  max-width: 100%;
+}
+.illust {
+  font-size: 16px;
+  padding-bottom: 40px;
+}
+.illust h3 {
+  font-size: 24px;
+  color: #0d64a8;
+  font-weight: 300;
+  letter-spacing: -1px;
+}
+.illust p {
+  margin-top: -5px;
+  font-weight: 300;
+  font-size: 16px;
+  color: #777;
+}
+.illust p strong {
+  font-weight: 500;
+}
+.illust p span {
+  display: inline-block;
+}
+
+
+/* priceTable */
+.priceWrap {
+  color: #fff;
+  padding: 80px 0;
+  background: #111;
+  min-height: 800px;
+  position: relative;
+  /*
+  border-bottom: 1px solid #0D1F35;
+  */
+}
+.priceWrap .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(13,31,53,0.5);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#80133153,endColorstr=#80133153); 
+  zoom: 1;
+}
+.priceMonthly {
+  background: #0b192b url(../images/bg/shutterstock_190004864.jpg) no-repeat center top fixed;
+  background-size: cover;
+}
+.pricelongterm {
+  background: #081423 url(../images/bg/shutterstock_206231569.jpg) no-repeat center top fixed;
+  background-size: cover;
+}
+.priceoneplace {
+  background: #0b192b url(../images/bg/shutterstock_251794675.jpg) no-repeat center center fixed;
+  background-size: cover;
+}
+.priceWrap h3 {
+  font-size: 30px;
+  color: #fff;
+  font-weight: 100;
+}
+.priceWrap h3 small {
+  font-size: 48px;
+  color: #fff;
+  font-weight: 200;
+  display: block;
+}
+.priceWrap h4 {
+  font-size: 16px;
+  font-weight: 200;
+  margin-bottom: 40px;
+}
+.priceTag {
+  border-radius: 4px;
+  text-align: center;
+  min-height: 400px;
+  position: relative;
+}
+.priceHeading {
+  background: #fff;
+  padding: 20px 0 10px;
+  border-radius: 4px 4px 0 0;
+  color: #0b192b;
+}
+.priceHeading span {
+  font-size: 11px;
+}
+.priceHeading h5 {
+  font-size: 14px;
+  margin-bottom: 0;
+}
+.priceHeading h6 {
+  font-size: 40px;
+  margin: 10px 0 10px;
+  font-weight: 300;
+}
+.priceHeading h6 small {
+  font-size: 20px;
+  font-weight: 200;
+  display: block;
+  margin: 10px 0 0;
+}
+
+
+.priceBody {
+  padding: 10px 0;
+  color: #fff;
+}
+.p_basic .priceBody {
+  display: none;
+}
+#mPassPrice_13 {
+  display: block;
+}
+.priceBody .price {
+  position: relative;
+}
+.priceBody .price p {
+  margin: 0;
+  padding: 0 12%;
+}
+.priceBody .price .origin {
+  font-size: 14px;
+  margin-top: 10px;
+  line-height: 1.2;
+}
+.priceBody .price .discounted {
+  font-size: 24px;
+  margin-bottom: 20px;
+  font-weight: 300;
+}
+.priceBody .discounted small {
+  font-weight: 300;
+}
+.priceBody .price .event {
+  position: absolute;
+  right: 5px;
+  top: -55px;
+  border-radius: 50%;
+  width: 72px;
+  height: 72px;
+  text-align: center;
+  padding: 15px 3px 0;
+  opacity: 0.95;
+}
+.priceBody .price .event strong {
+  display: block;
+  line-height: 1;
+  font-size: 10px;
+}
+.priceBody .price .event em {
+  font-style: normal;
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 1.5;
+}
+.priceBody .price .event em small {
+  font-size: 12px;
+}
+.priceBody .desc {
+  min-height: 50px;
+  margin-top: 20px;
+}
+.priceBody .desc span {
+  display: block;
+}
+.priceBody .btnWrap {
+  margin: 30px 0 10px;
+  bottom: 0;
+}
+.priceBody .btnWrap a {
+  border: 1px solid #fff;
+  padding: 10px 50px;
+  color: #fff;
+  font-weight: 500;
+  letter-spacing: -1px;
+}
+.priceBody .btnWrap a:hover {
+  background: #fff;
+  color: #01baea;
+}
+.priceTag .event {
+  position: absolute;
+}
+
+
+/* 가격별 색상 정리 */
+.p_beginner {
+  background: #42d2f8;
+}
+.p_beginner .priceHeading {
+  color: #42d2f8;
+}
+.p_beginner h6 small {
+  color: #42d2f8;
+}
+.p_basic {
+  background: #01baea
+}
+.p_basic .priceHeading {
+  color: #01baea;
+}
+.p_basic h6 small {
+  color: #01baea;
+}
+.month3 {
+  background: #f5f5f5;
+}
+.month3 .priceBody,
+.month3 .priceHeading {
+  color: #30619c;
+}
+.month3 h6 small {
+  color: #30619c;
+}
+.month3 .priceBody .btnWrap a {
+  color: #30619c;
+  border-color: #30619c;
+}
+.month6 {
+  background: #eee;
+}
+.month6 .priceBody,
+.month6 .priceHeading {
+  color: #0d1f35;
+}
+.month6 h6 small {
+  color: #0d1f35;
+}
+.month6 .priceBody .btnWrap a {
+  color: #0d1f35;
+  border-color: #0d1f35;
+}
+
+/* 이벤트 할인율 표시 */
+
+.p_beginner .price .event {
+  background: #0d1f35;
+  color: #11bcf4;
+}
+.p_basic .priceBody .price .event {
+  background: #0d1f35;
+  color: #11bcf4;  
+}
+.month3 .price .event {
+  color: #aac7e9;
+  background: #1a4272; 
+}
+.month6 .price .event {
+  color: #b8d2f0;
+  background: #081423; 
+}
+.priceAdditionalInfo {
+  opacity: 1;
+  margin-top: -100px;
+  font-weight: 200;
+}
+
+
+/* 원플레이스 멤버십 개편중 기다려주세요 */
+.waitplz {
+  display: inline-block;
+  margin: 20px 0 0;
+  padding: 50px;
+  width: 100%;
+  background: rgba(0,0,0,0.5);
+  border-radius: 4px;
+  opacity: 0.5;
+  color: #fff;
+}
+
+
+
+.mPriceSlider {
+  padding: 30px 30px 0;
+}
+
+
+
+
+/* ---------------------------
+=map body.mapPage  body에 아이디로 덮어쓰기
+--------------------------- */
+.mapPage {
+  height: 100%;
+  background: #fff;
+}
+.mapPage .snsTopLinks {
+  display: none;
+}
+/* 지도 화면에서 gnb 를 상단에 고정하고.. */
+.mapPage .gnb {
+  position: fixed;
+  width: 100%;
+}
+/* 고정된 영역만큼 위쪽에 패딩 */
+.mapPage .wrap {
+  padding-top: 80px;
+}
+/* map footer 높이 줄이기 */
+.mapPage .footer {
+  height: 0;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+
+/* map 관련 width, height 100% */
+.mapWrap .root_daum_roughmap {
+  width: 100% !important;
+  height: 100% !important;
+}
+.mapWrap .root_daum_roughmap .wrap_map {
+  height: 100% !important;
+}
+.root_daum_roughmap .wrap_controllers {
+  display: none;
+}
+
+
+/* 왼쪽 리스트 부분을 실제 문서 영역으로.. */
+.mapWrap {
+  width: 70%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding-top: 80px;
+}
+
+/* 패스별 구분 보기 라디오 버튼 */
+.passTypeSelect {
+  position: fixed;
+  left: 32%;
+  top: 100px;
+  z-index: 500;
+}
+/* 모바일이 아닌 경우 목록 보기 버튼 숨기기 */
+.passTypeSelect .forMobile {
+  display: none;
+}
+.passTypeSelect .btn-primary {
+  background: #0d1f35;
+  border-color: #315177;
+  font-size: 12px;
+  font-weight: 500;
+  height: 32px;
+}
+.passTypeSelect label img {
+  width: 16px;
+  height: 16px;
+}
+/* 패스별 버튼에 색상 지정 */
+.passTypeSelect .p_all.active,
+.passTypeSelect .p_1pass.active,
+.passTypeSelect .p_all:hover,
+.passTypeSelect .p_1pass:hover {
+  background: #00c0f0;
+  border-color: #00c0f0;
+}
+.passTypeSelect .p_2pass.active,
+.passTypeSelect .p_2pass:hover {
+  background: #9a90d1;
+  border-color: #9a90d1;
+}
+.passTypeSelect .p_one.active,
+.passTypeSelect .p_one:hover {
+  background: #f6786e;
+  border-color: #f6786e;
+}
+
+/* 지도위 센터 이름 푯말 */
+.pinOverlay {
+  margin-top: -10px;
+  max-width: 276px;
+  padding: 1px;
+  background: rgba(255,255,255,0.9);
+  -webkit-background-clip: padding-box;
+          background-clip: padding-box;
+  border: 1px solid #00c0f0;
+  border: 2px solid #00c0f0;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+          box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+  line-break: auto;
+}
+.pinOverlay .title {
+  padding: 6px 14px 8px;
+  margin: 0;
+  font-size: 13px;
+  border-radius: 4px;
+  letter-spacing: -1px;
+}
+.pinOverlay .title i {
+  font-size: 18px;
+  margin-left: 10px;
+  color: #00c0f0;
+}
+.pinOverlay .content {
+  padding: 9px 14px;
+}
+.pinOverlay > .arrow,
+.pinOverlay > .arrow:after {
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+}
+.pinOverlay > .arrow {
+  border-width: 11px;
+  bottom: -9px;
+  left: 50%;
+  margin-left: -11px;
+  border-top-color: #00c0f0;
+  border-bottom-width: 0;
+}
+.pinOverlay > .arrow:after {
+  content: "";
+  border-width: 10px;
+  bottom: 1px;
+  margin-left: -10px;
+  content: " ";
+  border-top-color: #fff;
+  border-bottom-width: 0;
+}
+
+
+
+
+/* --- 왼쪽 센터 목록 상자 --- */
+.centerListBox {
+  position: relative;
+  z-index: 90;
+  padding-top: 50px;
+  width: 30%;
+}
+/* 센터 검색, 필터, 소팅 */
+.filter {
+  position: fixed;
+  top: 80px;
+  left: 0;
+  width: 30%;
+  background: #fff;
+  z-index: 80;
+  transition: all 0.3s ease 0s;
+}
+/* GNB 가 줄어들었을때 필터바 위치 */
+.body_has_c_gnb .filter {
+  top: 50px;
+}
+.searchForm {
+  padding: 5px;
+  background: #00c0f0;
+}
+.searchForm .form-control {
+  background: #fff;
+  color: #00c0f0;
+  border-color: #00c0f0;
+}
+.sortingBox {
+  margin: 10px 0;
+  padding: 0 15px;
+}
+.searchResultWrap {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.resultInfo {
+  margin: 0 0 20px;
+}
+.resultInfo h4 strong {
+  font-size: 60px;
+  font-weight: 100;
+  color: #00bff0;
+}
+.resultInfo h4 small {
+  font-size: 14px;
+  font-weight: 200;
+  color: #00bff0;
+  display: block;
+  margin: 5px 0;
+}
+.resultInfo .btn_viewAll {
+  font-weight: 600;
+  font-size: 12px;
+}
+.resultInfo .btn_mapView {
+  display: none;
+  width: 100%;
+}
+/* 리스트 시작 */
+.centetList {
+  color: #0d1f35;
+  overflow: hidden;
+}
+.centetList li {
+  float: left;
+  width: 50%;
+  padding: 5px;
+}
+.centetList li>a {
+  text-decoration: none;
+  display: block;
+  color: #0d1f35;
+  overflow: hidden;
+}
+.centetList .responsibleImgBox {
+  overflow: hidden;
+  position: relative;
+  padding-bottom: 67%;
+}
+.centetList .thumbnail {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  border-radius: 3px;
+  padding: 0;
+  border: 0 none;
+  margin: 0;
+}
+.centetList .info {
+  display: block;
+  padding: 5px;
+}
+.centetList .info h5 {
+  color: #00bff0;
+  font-weight: 500;
+  font-size: 13px;
+  margin: 0 0 2px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  letter-spacing: -1px;
+}
+.centetList .info address {
+  font-size: 13px;
+  letter-spacing: -1px;
+  margin: 0 0 5px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.centetList .info .events {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.2;
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.centetList .info .matched {
+  background: #00bff0;
+  color: #fff;
+  padding: 0 2px;
+  border-radius: 3px;
+}
+
+/* 센터 리스트에서 센터링크에 hover */
+.centetList li>a:hover {
+  background: #00c0f0;
+  color: #fff;
+}
+.centetList li>a:hover .info h5 {
+  color: #fff;
+}
+.centetList li>a:hover .info address,
+.centetList li>a:hover .info .events {
+  opacity: 0.8;
+}
+
+
+
+
+/* --- 오른쪽 센터 상세보기 상자 --- */
+.centerDetailViewBox {
+  display: none;
+  position: fixed;
+  right: 0;
+  top: 80px;
+  z-index: 300;
+  width: 30%;
+  max-width: 370px;
+  height: 100%;
+  background: rgba(255,255,255,.9);
+  box-shadow: 0 0 10px rgba(0,0,0,.2);
+  overflow-y: auto;
+  padding: 0 15px 15px;
+}
+.closeBtnWrap {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  z-index: 200;
+}
+.closeBtnWrap .btn_close i {
+  font-size: 32px;
+  color: #fff;
+}
+.centerDetail {
+  margin: 0 -15px;
+  background: #fff;
+}
+.cHeading {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+}
+.cHeading .imgCenter {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.cHeading .coverOverlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: -moz-linear-gradient(top,  rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.42) 48%, rgba(255,255,255,0) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top,  rgba(0,0,0,0.8) 0%,rgba(0,0,0,0.42) 48%,rgba(255,255,255,0) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom,  rgba(0,0,0,0.8) 0%,rgba(0,0,0,0.42) 48%,rgba(255,255,255,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc000000', endColorstr='#80000000',GradientType=0 ); /* IE6-9 */
+}
+.cHeading .mapPin {
+  position: absolute;
+  top: 35px;
+  left: 15px;
+}
+.cHeading .mapPin img {
+  width: 27px;
+}
+.cHeading .info {
+  position: absolute;
+  top: 60px;
+  left: 15px;
+  right: 15px;
+  color: #fff;
+}
+.cHeading .info a {
+  color: #fff;
+}
+.cHeading .info h3 {
+  font-size: 24px;
+  color: #00bff0;
+  font-weight: 400;
+  letter-spacing: -1px;
+}
+.cHeading .info address {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -1px;
+}
+.cHeading .info .goThisCenterHome {
+  background: #fff;
+  border-radius: 20px;
+  padding: 5px 20px;
+  color: #00bff0;
+  font-size: 11px;
+  display: inline-block;
+  margin-top: 20px;
+  text-decoration: none;
+}
+.cHeading .info .goThisCenterHome:hover {
+  background: #00c0f0;
+  color: #fff;
+}
+.centerDetail .cBody {
+  padding: 15px;
+}
+.centerDetail .cBody h6 {
+  margin: 0 0 5px;
+  color: #00c0f0;
+}
+.centerDetail .cBody p {
+  font-size: 14px;
+  margin-bottom: 30px;
+}
+.centerDetail .cBody .events {
+  display: block;
+}
+.centerDetail .cBody .events img {
+  width: 32px;
+  height: 32px;
+  vertical-align: middle;
+}
+.centerDetail .cBody .events span {
+  border-radius: 20px;
+  border: 1px solid #00c0f0;
+  color: #00c0f0;
+  padding: 2px 10px;
+  margin: 5px 0;
+  display: inline-block;
+  font-size: 13px;
+  vertical-align: middle;
+}
+.centerDetail .cBody .events em {
+  position: relative;
+  display: inline-block;
+}
+.centerDetail .cBody .events em img.strike {
+  position: absolute;
+  width: 26px;
+  height: 7px;
+  top: 12px;
+  left: 2px;
+}
+.centerDetail .cBody .events small {
+  display: block;
+  color: #0D1F35;
+  letter-spacing: -1px;
+  font-size: 11px;
+} 
+
+
+
+
+/* ---------------------------
+=center Detail 센터 상세보기
+--------------------------- */
+.centerMasterHead {
+  position: relative;
+  height: 400px;
+}
+.centerMasterHead .cHeading {
+  height: 400px;
+  position: static;
+}
+.centerMasterHead .cHeading .info {
+  position: relative;
+  left: 0;
+  text-align: center;
+}
+.centerMasterHead .cHeading h3 {
+  font-size: 40px;
+  font-weight: 200;
+  text-align: center;
+  letter-spacing: -2px;
+}
+.centerMasterHead .cHeading .mapPin {
+  position: static;
+  display: block;
+}
+.centerMasterHead .cHeading .mapPin img {
+  width: 54px;
+  height: 88px;
+}
+.centerDetailWrap .btnHoverCircle {
+  position: absolute;
+  top: -75px;
+  right: 40px;
+  z-index: 10;
+  
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  padding: 45px 0 0;
+
+  background: rgb(0,191,240);  
+  background: rgba(0,191,240,1);
+  border: 4px solid rgb(255,255,255);
+  border: 4px solid rgba(255,255,255,0.5);
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  
+  font-size: 24px;
+  font-weight: 200;
+  letter-spacing: -1px;
+  color: #fff;
+  transition: all 0.3s ease 0s;
+}
+/* 데스크탑에서는 TLX 문자 숨김 */
+.centerDetailWrap .btnHoverCircle span {
+  display: none;
+}
+.centerDetailWrap .btnHoverCircle:hover {
+  top: -65px;
+}
+
+.centerDetailWrap .centerDetail {
+  margin: 15px -15px;
+}
+.centerDetailWrap .cBody h5 {
+  font-size: 24px;
+  font-weight: 200;
+  letter-spacing: -1px;
+  margin-bottom: 40px;
+}
+.centerDetailWrap .cBody h6 {
+  font-size: 20px;
+  font-weight: 200;
+  letter-spacing: -1px;
+  margin-bottom: 10px;
+}
+.centerDetailWrap .cBody p {
+  font-size: 16px;
+  font-weight: 300;
+}
+.centerGallery {
+  padding: 10px 0;
+}
+.centerGallery .responsibleImgBox {
+  overflow: hidden;
+  position: relative;
+  padding-bottom: 67%;
+  display: block;
+  margin-bottom: 30px;
+  border-radius: 3px;
+}
+.centerGallery .responsibleImgBox img {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  border-radius: 3px;
+}
+
+.centerGallery .responsibleImgBox .overlay {
+  background-color: rgba(0, 0, 0, 0.1);
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  transition: background-color 0.15s ease 0s;
+}
+.centerGallery .responsibleImgBox .overlay i {
+  left: 50%;
+  margin-left: -10px;
+  margin-top: -10px;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  transition: opacity 0.3s ease 0s;
+  font-size: 20px;
+  color: #fff;
+}
+.centerGallery .responsibleImgBox:hover img {
+  transition: transform 0.15s ease 0s;
+  transform: scale3d(1.2, 1.2, 1.2);
+}
+.centerGallery .responsibleImgBox:hover .overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.centerGallery .responsibleImgBox:hover .overlay i {
+  opacity: 1;
+}
+/* 센터 상세보기 화면에서 삽임된 지도의 너비 강제 지정 */
+.centerDetailWrap  .root_daum_roughmap {
+  width: 100% !important;
+}
+
+
+
+
+
+
+
+/* ---------------------------
+=register
+--------------------------- */
+.page-header {
+  border-top: 2px solid #0e2036;
+}
+.page-header h2 {
+  font-size: 32px;
+  font-weight: 200;
+  letter-spacing: -1px;
+}
+.page-header h2 small{
+  display: block;
+  font-size: 14px;
+  color: #00c0f0;
+  margin: 10px 2px 0;
+  letter-spacing: -1px;
+}
+.mbSmHeading {
+  font-size: 15px;
+  letter-spacing: -1px;
+  color: #00c0f0;
+}
+.memberForm .submitLine {
+  border-top: 1px solid #eee;
+  margin-top: 20px;
+  padding-top: 20px;
+}
+.memberForm .accBox {
+  padding: 20px 0 10px;
+  margin-bottom: 10px;
+  border-top: 1px dotted #ccc;
+  border-bottom: 1px dotted #ccc;  
+}
+.memberForm .help-block {
+  letter-spacing: -1px;
+}
+.memberForm .help-block span {
+  display: inline-block;
+}
+.memberForm h5.help-block {
+  font-size: 13px;
+  color: #00c0f0;
+}
+.memberForm .userImg {
+  width: 128px;
+  height: 128px;
+}
+.memberForm a {
+  text-decoration: underline;
+  color: #00c0f0;
+}
+.memberForm .male {
+  color: #00c0f0;
+}
+.memberForm .female {
+  color: #f6786e;
+}
+.postNumber {
+  margin-bottom: 5px;
+}
+.memberForm .profilePhotoUpload {
+  width: 100%;
+  height: 180px;
+  border: 0 none;
+  overflow: hidden;
+}
+
+
+
+/* ---------------------------
+=Login
+--------------------------- */
+
+.loginBox {
+  margin-bottom: 80px;
+}
+.notYetMember,
+.forgot {
+  padding-top: 20px;
+  margin-top: 20px;
+  border-top: 1px solid #eee;
+}
+.notYetMember a,
+.forgot a {
+  text-decoration: none;
+}
+.notYetMember a {
+  color: #fff;
+}
+.foundInfo {
+  overflow: hidden;
+}
+.foundInfo i.big {
+  font-size: 48px;
+  display: block;
+  margin-bottom: 10px;
+}
+.foundInfo em {
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+}
+
+
+
+
+/* ---------------------------
+=Service Apply 1
+--------------------------- */
+
+.pageIndicator {
+  overflow: hidden;
+  margin: 30px 0 -20px;
+  padding: 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 12px;
+  
+  display: none; /* 화면에서 보이지 않게 처리함 12.22 hi8ar toDo :: 템플릿에서 해당 부분을 제거한 후 이 부분을 삭제 */
+}
+.pageIndicator li {
+  width: 33.3%;
+  text-align: center;
+  float: left;
+  color: #bbb;
+  padding: 5px 0;
+  background: #fff url(../images/bg_pi_3.png) no-repeat right center;
+}
+.pageIndicator li.active {
+  background: #fff url(../images/bg_pi_3.png) no-repeat right center;
+  color: #11bcf4;
+}
+.pageIndicator li.done {
+  background: #fff;
+}
+
+.greeting {
+  padding: 20px 20px 10px;
+  background: #f5f5f5;
+  border-radius: 4px;
+  text-align: center;
+}
+.greeting h3 {
+  font-weight: 400;
+  letter-spacing: -2px;
+  margin: 0 0 10px;
+}
+p.anc {
+  color: #777;
+  margin: 10px 0;
+}
+
+.serviceApplyWrap {
+  margin: 20px 0 30px; 
+}
+.serviceApplyWrap h4 {
+  font-size: 14px;
+  margin: 20px 0;
+}
+.serviceApplyWrap .nav b { display: block;}
+.serviceApplyWrap .nav a { outline: none; }
+
+.priceTabContent h3 {
+  font-weight: 200;
+  font-size: 28px;
+  color: #00c0f0;
+}
+.priceTabContent h3 small {
+  display: block;
+  font-size: 40px;
+  font-weight: 200;
+  color: #00c0f0;
+}
+.priceTabContent h4 {
+  font-weight: 400;
+  font-size: 14px;
+  color: #888;
+} 
+.priceTabContent .priceTag {
+  padding: 1px;
+  border-radius: 0;
+}
+.priceTabContent .priceHeading {
+  border-radius: 0;
+}
+.priceTabContent .tab-pane {
+  padding: 20px 0;
+}
+.priceTabContent .priceAdditionalInfo {
+  margin: 30px 0 10px;
+  padding-top: 20px;
+  opacity: 1;
+  font-weight: 400;
+  border-top: 1px solid #ddd;
+}
+.priceTabContent .priceAdditionalInfo h5 {
+  margin: 10px 0;
+}
+.priceTabContent .priceAdditionalInfo h5 strong {
+  color: #00c0f0;
+}
+.priceTabContent .priceAdditionalInfo h6 {
+  font-size: 14px;
+  color: #888;
+}
+.priceTabContent .priceAdditionalInfo li i {
+  color: #f6b37f;
+}
+.priceTabContent .startDateCheckBox {
+  background: #fff;
+}
+.datepicker table tr td.disabled, .datepicker table tr td.disabled:hover {
+  color: #bbb;
+}
+
+
+
+/* ---------------------------
+=Service Apply 2
+--------------------------- */
+
+.selectedPrice {
+  border: 1px solid #11BCF4;
+  color: #11BCF4;
+  padding: 20px;
+  width: 100%;
+  border-radius: 4px;
+  text-align: center;
+}
+.selectedPrice .pType {
+  text-align: center;
+  font-size: 11px;
+  display: block;
+}
+.selectedPrice h5 {
+  font-size: 18px;
+}
+.selectedPrice h6 {
+  font-size: 40px;
+  font-weight: 300;
+  color: #0e2036;
+}
+.selectedPrice h6 span {
+  font-size: 13px;
+  color: #00c0f0;
+  font-weight: 600;
+}
+.month3 h6 span {
+  color: #30619C;
+}
+.month6 h6 span {
+  color: #0D1F35;
+}
+.selectedPrice h6 small {
+  margin-left: 5px;
+  margin-top: 10px;
+  font-size: 22px;
+  font-weight: 200;
+  display: block;
+  color: #0e2036;
+}
+.selectedPrice.month {
+  border-color: #aaa;
+  background: #fff;
+}
+.selectedPrice.month.month3 {
+  color: #30619C;
+}
+.selectedPrice.month.month6 {
+  color: #0D1F35;
+}
+.paymentInfo h4 {
+  font-size: 18px;
+  color: #00c0f0;
+  letter-spacing: -1px;
+  margin: 30px 0 10px;
+}
+
+
+.paymentInfoSheet {
+  margin: 10px 0;
+}
+.paymentInfoSheet h6 {
+  font-size: 14px;
+  font-weight: 500;
+  color: #00bff0;
+  letter-spacing: -1px;
+  padding: 10px 0;
+}
+.paymentInfoSheet .summary h5 {
+  margin: 0 0 5px;
+  border: 1px solid #00bff0;
+  color: #00bff0;
+  padding: 10px;
+  border-radius: 2px;
+  letter-spacing: -1px;
+}
+.paymentInfoSheet .summary h6 {
+  padding: 5px 0;
+  margin: 0;
+}
+.paymentInfoSheet .summary p {
+    margin: 5px 0 30px 15px;
+}
+.paymentInfoSheet .summary p {
+  margin: 0 0 20px;
+}
+.paymentInfoSheet .summary p strong {
+  font-size: 32px;
+  font-weight: 200;
+}
+.paymentInfoSheet .startDateCheckBox {
+  margin: 0 0 20px;
+}
+.paymentInfoSheet .startDateCheckBox input.form-control {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+}
+.paymentInfoSheet p small {
+  letter-spacing: -1px;
+  color: #888;
+  display: block;
+}
+.paymentInfoSheet fieldset {
+  background: #f5f5f5;
+  border-radius: 4px;
+  margin: 0 0 10px;
+}
+.paymentInfoSheet .control-label {
+  font-size: 13px;
+  letter-spacing: -1px;
+}
+.paymentInfoSheet .nav-tabs {
+  font-size: 12px;
+}
+.paymentInfoSheet .nav-tabs a {
+  background: #eee;
+}
+.tabAcoountType {
+  padding: 10px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-top: 0 none;
+}
+.tabAcoountType .form-control {
+  width: 20%;
+  display: inline;
+  text-align: center;
+}
+.birthday select.form-control {
+  width: 25%;
+  display: inline;
+}
+.tabAcoountType .phoneNumber {
+  width: 60%;
+}
+.paymentInfoSheet .summary {
+  font-size: 14px;  
+}
+
+
+.payAgreement .text-warning {
+  display: inline-block;
+}
+.payAgreement .textBox {
+  background: #fff;
+  font-size: 12px;
+  padding: 0 19px;
+}
+.payAgreement ol {
+  padding-left: 15px;
+}
+.payAgreement ol li {
+  list-style: decimal;
+  margin: 10px 0;
+}
+.payAgreement .agreementBox {
+  font-size: 12px;
+  color: #777;
+}
+.payAgreement .agreementBox label {
+  padding: 5px 12px;
+  border: 1px solid #ddd;
+  margin: 0 7px;
+  border-radius: 2px;
+  background: #fff;
+  cursor: pointer;
+  color: #0d1f35;
+}
+.paymentSubmitLine {
+  border-top: 1px solid #ccc;
+  padding: 15px 0;
+  margin-top: 15px;
+  clear: both;
+}
+.paymentSubmitLine button {
+  min-width: 30%;
+}
+.paymentType {
+  font-size: 14px;
+}
+.paymentType > .nav {
+  margin: 10px 0;
+}
+.paymentType > .nav > li > a {
+  padding: 7px 15px;
+  background: #eee;
+  font-weight: 500;
+  border-radius: 2px;
+  font-size: 14px;
+  letter-spacing: -1px;
+  margin-bottom: 5px;
+}
+.paymentType > .nav-pills > li.active > a,
+.paymentType > .nav-pills > li.active > a:focus,
+.paymentType > .nav-pills > li.active > a:hover {
+  background: #00c0f0;
+}
+.paymentType .nav > li > a i {
+  margin-right: 3px;
+}
+.payAnc {
+}
+.payAnc span {
+  display: inline-block;
+}
+.paymentType h5 {
+  margin: 20px 0px 5px;
+  color: #00BFF0;
+  font-size: 14px;
+  letter-spacing: -1px;
+}
+.paymentType .payAnc strong {
+  font-size: 20px;
+}
+
+
+/* ---------------------------
+=Service Apply Done
+--------------------------- */
+.paymentInfoSheet .done {
+}
+.paymentInfoSheet .done h6 {
+  margin: 0;
+  padding: 0;
+}
+.paymentInfoSheet .done p {
+  margin: 5px 0 10px;
+}
+.paymentInfoSheet .done p strong {
+  font-size: 20px;
+}
+.paymentInfoSheet .done .paymentTypeDetail {
+  border: 1px solid #00bff0;
+  color: #00bff0;
+  border-radius: 4px;
+  padding: 10px;
+  margin: -10px 0 20px;
+}
+.paymentInfoSheet .done .paymentTypeDetail em {
+  padding: 2px 5px;
+  margin: 0 5px;
+  border-radius: 4px;
+  font-style: normal;
+  font-size: 16px;
+}
+.doneGreeting {
+  margin: 20px 0 0;
+  overflow: hidden;
+}
+.doneGreeting i.big {
+  font-size: 48px;
+  display: block;
+  margin-bottom: 10px;
+}
+.doneGreeting p {
+  margin: 0 0 10px;
+}
+
+/* ---------------------------
+=howto
+--------------------------- */
+.howto {
+  padding: 30px 0 60px;
+}
+.howto .page-header {
+  border: 0 none;
+  margin-top: 0;
+}
+.howtoCenter {
+  background: #e2f9ff;
+}
+.step {
+  text-align: center;
+}
+.step strong {
+  display: block;
+  font-size: 24px;
+  color: #00c0f0;
+  font-weight: 500;
+  letter-spacing: -1px;
+  margin: 30px 0;
+}
+.step strong b {
+  font-size: 36px;
+  font-weight: 300;
+}
+.step img {
+  width: 200px;
+  height: 200px;
+}
+.step h3 {
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: -1px;
+  margin-top: 40px;
+}
+.step .detail {
+  color: #0d64a8;
+  letter-spacing: -1px;
+  line-height: 1.4;
+}
+.step .detail span {
+  display: block;
+}
+.howtoList {
+  font-size: 18px;
+  opacity: 0.7;
+}
+.howtoList li {
+  list-style: disc;
+  margin-left: 20px;
+  letter-spacing: -1px;
+  font-weight: 300;
+}
+.sampleMap {
+  margin: 40px 0 20px;
+}
+.sampleMap img {
+  width: 100%;
+  border-radius: 4px;
+}
+.passAnc {
+  margin-bottom: 40px;
+}
+.passAnc strong {
+  font-size: 30px;
+  font-weight: 300;
+  color: #fff;
+  color: #00c0f0;
+  border: 1px solid #00c0f0;
+  display: inline-block;
+  padding: 5px 0;
+  width: 100%;
+  text-align: center;
+  border-radius: 3px;
+  margin: 0 0 10px;
+}
+.passAnc p {
+   color: #00bff0;
+   font-size: 14px;
+   letter-spacing: -1px;
+}
+.passLabelBox {
+  overflow: hidden;
+  margin: 20px 0;
+  letter-spacing: -1px;
+}
+.passLabelBox img {
+  width: 64px;
+  height: 64px;
+  float: left;
+  margin-right: 10px;
+}
+.passLabelBox h4 {
+  margin: 5px 0;
+  font-size: 20px;
+  font-weight: 400;
+  margin-left: 74px;
+}
+.passLabelBox p {
+  font-size: 14px;
+  opacity: 0.5;
+  margin-left: 74px;
+}
+.passLabel_1 h4 {
+  color: #00c0f0;
+}
+.passLabel_2 h4 {
+  color: #9a90d1;
+}
+.passLabel_one h4 {
+  color: #f6786e;
+  font-size: 18px;
+}
+  
+  
+  
+.plzNote {}
+.plzNote .note {
+  letter-spacing: -1px;
+  font-size: 18px;
+}
+.plzNote .note li {
+  margin-bottom: 30px;
+}
+.plzNote .note li span {
+  display: inline-block;
+}
+.plzNote .note li strong {
+  font-weight: 400;
+  color: #00bff0;
+}
+.plzNote .note .question {
+  font-size: 16px;
+  font-weight: 600;
+  padding-left: 30px;
+}
+.plzNote .note .question i {
+  color: #00bff0;
+  font-size: 24px;
+  margin-right: 6px;
+  vertical-align: middle;
+  margin-left: -30px;
+}
+.plzNote .note .answer {
+  opacity: 0.7;
+  font-weight: 300;
+  padding-left: 30px;  
+}
+  
+  
+  
+
+
+/* ---------------------------
+=My page
+--------------------------- */
+
+.mypageWrap {
+}
+.mypageWrap h3 {
+  font-size: 18px;
+  color: #00C0F0;
+  letter-spacing: -1px;
+  margin: 30px 0px 20px;
+}
+.userInfo {
+}
+.userInfoBox {
+  border-radius: 4px;
+  overflow: hidden;
+  padding: 20px;
+}
+.userInfoBoxInner {
+  overflow: hidden;
+  text-align: center;
+}
+.userInfo .thumb {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  margin: 0 auto;
+  display: block;
+}
+.userInfo h4 {
+  font-size: 22px;
+  margin-top: 20px;
+}
+.userInfo h4 small {
+  display: block;
+  margin-top: 4px;
+  font-size: 14px;
+}
+.userInfo h4 small.male i {
+  font-size: 20px;
+  color: #00c0f0;
+}
+.userInfo h4 small.female i {
+  font-size: 20px;
+  color: #F6786E;
+}
+.userInfo .phoneNumber,
+.userInfo .email {
+  font-weight: 400;
+}
+.userInfo .selectedPrice {
+  margin: 0;
+  width: 100%;
+  max-width: none;
+  min-width: none;
+}
+.selectedPrice .cardBottom {
+  background: #00c0f0;
+  color: #fff;
+  margin: 20px -20px;
+  padding: 15px 20px 10px;
+  font-size: 13px;
+  text-align: left;
+}
+
+.month3 .cardBottom {
+  background: #30619C;
+}
+.month6 .cardBottom {
+  background: #0D1F35;
+}
+.userInfo .selectedPrice .cardBottom p {
+  overflow: hidden;
+}
+.userInfo .selectedPrice .cardBottom p strong {
+  letter-spacing: -1px;
+  opacity: 0.8;
+  width: 40%;
+  text-align: right;
+  padding-right: 10px;
+  display: inline-block;
+}
+.userInfo .selectedPrice .cardBottom p span.cnt, 
+.userInfo .selectedPrice .cardBottom p span.term {
+  font-size: 16px;
+}
+.userInfo .selectedPrice .btnWrap {
+  text-align: right;
+}
+.userInfo .selectedPrice .cardBottom p span.paymentTypeDetail {
+  overflow: hidden;
+  display: inline-block;
+  width: 59%;
+  vertical-align: top;
+}
+.userInfo .selectedPrice .cardBottom p span.paymentTypeDetail em {
+  display: block;
+  font-style: normal;
+}
+.userInfo .selectedPrice .cardBottom p span.paymentTypeDetail button.btn-default {
+  border-color: transparent;
+}
+
+.notYetMembership h4 {
+  font-size: 18px;
+  letter-spacing: -1px;
+  margin-bottom: 20px;
+  min-height: 70px;
+  line-height: 1.5;
+}
+.notYetMembership h4 span {
+  display: inline-block;
+}
+
+
+.history {}
+.history .hasNo {
+  font-size: 12px;
+  letter-spacing: -1px;
+  color: #777;
+  display: block;
+}
+
+
+
+.subPage {
+}
+.subPage .alert span {
+  display: inline-block;
+}
+.subPage .applyBoxWrap {
+  margin: 10px 0;
+}
+#applyBox .now {
+  color: #00c0f0;
+}
+.page-header {
+  position: relative;
+}
+.page-header .withdraw {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.withdrawApplyList {
+  text-align: left;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  margin-top: 20px;
+}
+.withdrawApplyList h6 {
+  border-bottom: 1px solid #ddd;
+  padding: 10px;
+  background: #eee;
+}
+
+
+
+/* ---------------------------
+=Notice
+--------------------------- */
+article {
+  font-size: 16px;
+  color: #777;
+}
+article img {
+  max-width: 100%;
+}
+.articleTail {
+  padding: 20px 0;
+  margin: 20px 0;
+  border-top: 1px solid #ddd;
+}
+/* bootstrap overwrite */
+.table > tbody > tr > td,
+.table > tbody > tr > th,
+.table > tfoot > tr > td,
+.table > tfoot > tr > th,
+.table > thead > tr > td,
+.table > thead > tr > th {
+  padding: 15px 10px;
+}
+
+
+/* ---------------------------
+=cs Center
+--------------------------- */
+.csCenterWrap h3 {
+  font-size: 18px;
+  color: #00C0F0;
+  letter-spacing: -1px;
+  margin: 0 0px 20px;
+}
+.csCenterWrap .innerBox {
+  margin: 0 0 40px;
+}
+.csCenterWrap .innerBox h3 {
+  margin: 0 0 10px;
+}
+.csCenterWrap .innerBox p span {
+  display: inline-block;
+}
+.panel {
+  box-shadow: none;
+}
+.panel-group .panel {
+  border-radius: 2px;
+}
+.faqType {
+  font-size: 12px;
+  letter-spacing: -1px;
+  display: inline-block;
+  padding: 3px 5px;
+  border: 1px solid #ddd;
+  color: #777;
+  font-weight: 400;
+  border-radius: 2px;
+  margin-right: 10px;
+  background: #fff;
+  float: left;
+}
+.faqType_1 {
+  color: #798E19;
+  border-color: #798E19;  
+}
+.faqType_2 {
+  color: #E0498E;
+  border-color: #E0498E;
+}
+.faqType_3,
+.faqType_4 {
+  color: #00c0f0;
+  border-color: #00c0f0;
+}
+.accordionList h4 {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -1px;
+  line-height: 1.5;
+}
+.accordionList h4 i {
+  font-size: 16px;
+  margin-right: 5px;
+}
+.accordionFaq .panel-heading {
+  padding: 5px;
+}
+.accordionFaq .panel-title a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  line-height: 1.5;
+  overflow: hidden;
+}
+.accordionList .panel-title a:hover {
+  background: #eee;
+}
+.accordionList .panel-body {
+  color: #666;
+  font-size: 13px;
+  padding-left: 75px;
+}
+.accordionList .panel-heading {
+  overflow: hidden;
+}
+.accordionList .btnAnswer {
+  float: right;
+}
+.accordionList .panel-title .date {
+  font-size: 13px;
+  font-weight: 400;
+  color: #777;
+  letter-spacing: 0;
+  margin-left: 10px;
+}
+
+.qaListWrap h3 {
+  font-size: 18px;
+  color: #00C0F0;
+  letter-spacing: -1px;
+  margin: 0 0px 20px;
+}
+.qaListWrap .question {
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 10px;
+}
+.qaListWrap .answer {
+  margin-top: 10px;
+}
+.qaListWrap h5 {
+  font-size: 16px;
+  color: #0e2036;
+}
+.qaListWrap h5 small {
+  display: block;
+  margin: 10px 0;
+}
+.qaListWrap .answer h5 {
+  color: #00c0f0;
+}
+.applyBoxWrap {
+  margin-bottom: 30px;
+}
+
+
+
+
+
+
+
+/* ---------------------------
+=Web App - 센터인증 부분
+--------------------------- */
+
+.webAppHeader {
+  height: 54px;
+  background: #00c0f0;
+  background: rgba(0,191,240,0.9);
+  color: #fff;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  box-shadow: 0 0 6px rgba(0,0,0,0.2);
+  font-size: 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 99;
+}
+.webAppHeader h1 {
+  text-align: center;
+  margin: 0;
+  font-size: 22px;
+  letter-spacing: -1px;
+  font-weight: 300;
+  line-height: 54px;
+}
+/* 좌우 버튼 */
+.webAppHeader .wbt {
+  display: block;
+  position: absolute;
+  top: 0;
+}
+.webAppHeader .wbt_left {
+  left: 0px;
+}
+.webAppHeader .wbt_right {
+  right: 0px;
+}
+.webAppHeader .wbt a {
+  display: block;
+  text-align: center;
+  line-height: 50px;
+  color: #fff;
+  width: 53px;
+  height: 53px;
+  text-align: center;
+  background: rgba(255,255,255,0.1);
+}
+
+.availableCenterList {
+}
+.availableCenterList h2 {
+  margin: 0px 0px 5px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: -1px;
+  padding: 5px;
+  color: #00c0f0;
+  border-radius: 3px;
+}
+.availableCenterList h2 i.fa {
+  margin-right: 5px;
+  font-size: 20px;
+  vertical-align: text-bottom;
+}
+.availableCenterList li {
+  margin-bottom: 10px;
+}
+.availableCenterList li a {
+  display: block;
+  border: 1px solid #00c0f0;
+  border-radius: 60px;
+  padding: 20px 40px;
+  text-decoration: none;
+  position: relative;
+}
+.availableCenterList li a:hover {
+  background: #00c0f0;
+}
+
+.clHeading img {
+  width: 27px;
+  height: 44px;
+  float: left;
+  margin-right: 10px;
+}
+.clHeading h3 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 200;
+  letter-spacing: -1px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+li a:hover .clHeading h3 {
+  color: #fff;
+}
+.clBody {
+  padding-left: 37px;  
+  color: #888;
+  font-size: 12px;
+}
+.clBody .events {
+  color: #00c0f0;
+  font-size: 12px;
+  font-weight: 500;
+}
+li a:hover .clBody .events {
+  color: rgba(255,255,255,0.7);
+}
+.clBody address {
+  margin: 0;
+  letter-spacing: -1px;
+  font-size: 11px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+li a:hover .clBody address {
+  color: rgba(255,255,255,0.5);
+}
+.clBody .fav {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 20px;
+  color: #00c0f0;
+}
+li a:hover .clBody .fav {
+  color: #fff;
+}
+
+.clBody p {
+  margin: 0;
+}
+
+/* 최근 방문 센터 */
+.favoriteCenterList .clBody address {
+  display: none;
+}
+.nearbyCenterList {
+  margin: 30px 0 0;
+  animation-delay: 0.4s;  
+}
+.nearbyCenterList li a {
+  border-style: dashed;
+}
+.clInfo {
+  font-size: 14px;
+  margin: 20px 0 20px -37px;
+}
+.clInfo h6 {
+  color: #00C0F0;
+  font-size: 14px;
+  letter-spacing: -1px;
+  margin: 20px 0 5px;
+}
+.clInfo .events {
+  display: block;
+  padding: 4px 0;
+  color: #0e2036;
+}
+.clInfo .events img {
+  width: 27px;
+}
+.clInfo .events span {
+  border-radius: 20px;
+  border: 1px solid #00c0f0;
+  color: #00c0f0;
+  padding: 2px 10px;
+  margin: 5px 0;
+  display: inline-block;
+  font-size: 13px;
+  vertical-align: middle;
+}
+.clInfo .events em {
+  position: relative;
+  display: inline-block;
+}
+.clInfo .events em img.strike {
+  position: absolute;
+  width: 22px;
+  top: 10px;
+  left: 2px;
+}
+.clInfo .events small {
+  display: block;
+  color: #0D1F35;
+  letter-spacing: -1px;
+  font-size: 11px;
+}
+
+
+.centerSearch {
+  margin: 20px -15px 20px;
+  background: #eee;
+  padding: 10px 20px 20px;
+}
+.centerSearch p {
+  font-size: 14px;
+  letter-spacing: -1px;
+}
+
+.selectedCenter .clHeading h3 {
+  font-size: 32px;
+  white-space: normal;
+}
+
+/* 이용하기 버튼 */
+.bottomTool {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  color: #fff;
+  width: 100%;
+  z-index: 99;
+}
+.bottomTool a.centerPass {
+  display: block;
+  width: 100%;
+  padding: 10px 0;
+  text-align: center;
+  color: #fff;
+  text-decoration: none;
+  font-size: 20px;
+  letter-spacing: -1px;
+}
+.bottomTool a.centerPass strong {
+  display: block;
+  font-weight: 200;
+}
+.bottomTool a.centerPass img {
+  width: 27px;
+}
+
+.bottomTool a.cp1pass {
+  background: rgba(0,191,240,0.9);
+}
+.bottomTool a.cp2pass {
+  background: rgba(154,144,209,0.9);
+}
+.bottomTool a.cponepass {
+  background: rgba(246,120,110,0.9);
+}
+
+
+.apDone {
+  background: #00bff0;
+  color: #fff;
+  border-radius: 4px;
+  padding: 20px;
+  text-align: center;
+  border: 0 none;
+  box-shadow: none;
+}
+.apWait {
+  background: #0e2036;
+}
+.apNumber {
+  background: #0e2036;
+}
+
+.apDone .logo {
+  width: 180px;
+  margin: 40px 0 20px;
+}
+.apDone h3 {
+  margin-bottom: 20px;
+  font-weight: 200;
+  font-size: 36px;
+  letter-spacing: -1px;
+}
+.apDone p {
+  font-weight: 200;
+  font-size: 14px;
+  letter-spacing: -1px;
+  margin-bottom: 20px;
+}
+.apDone p strong {
+}
+.apDone .btn {
+  padding: 15px 0;
+}
+.apWait h3 small {
+  color: rgba(255,255,255,0.8);
+  display: block;
+  font-size: 15px;
+  margin-bottom: 20px;
+  font-weight: 200;
+}
+.avBox {
+  margin: 20px 0;
+  background: rgba(255,255,255,0.1);
+  padding: 10px;
+  text-align: left;
+}
+.avBox li {
+  margin-left: 25px;
+  list-style: disc;
+  color: rgba(255,255,255,0.8);
+}
+
+.veriCodeBox {
+  text-align: center;
+  margin-bottom: 30px;
+}
+.veriCodeBox .veriCode {
+  text-align: center;
+  margin: 20px 0 40px;
+}
+.veriCodeBox .veriCode strong {
+  font-size: 64px;
+  font-weight: 100;
+  letter-spacing: 5px;
+  line-height: 1; 
+}
+.veriCodeBox p {
+  margin-bottom: 20px;
+}
+.veriCodeBox p strong {
+  display: block;
+}
+
+.apDone .loader {
+  border-width: 0.5em;
+}
+.apDone .loader,
+.apDone .loader:after {
+  width: 5em;
+  height: 5em;
+}
+
+.apDone .failIcon {
+  font-size: 80px;
+}
+
+.webAppLoading {
+  background: #00c0f0;
+}
+
+.locationAuth {
+  margin: 50px 0 100px;
+  text-align: center;
+}
+.locationAuth h4 {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 200;
+  line-height: 1.2;
+  margin-bottom: 60px;
+}
+.locationAuth h4 span {
+  display: inline-block;
+}
+.locationAuth h4 small {
+  font-size: 14px;
+  color: #fff;
+}
+.locationAuth .loader {
+  border-width: 8em;
+  width: 10em;
+  height: 10em
+}
+
+
+
+.searchedCenterList {}
+.searchedCenterList h4 {
+  font-size: 14px;
+  font-weight: 400;
+  padding: 10px;
+  letter-spacing: -1px;
+}
+.searchedCenterList strong {
+  background: #fff660;
+  color: #333;
+  border-radius: 3px;
+}
+
+
+
+
+
+
+/* ---------------------------
+=Doc - 이용약관, 개인정보취급방침
+--------------------------- */
+
+.doc {
+  font-size: 14px;
+  color: #555;
+}
+.doc h4 {
+  font-size: 16px;
+  color: #00c0f0;
+  letter-spacing: -1px;
+  margin-top: 30px;
+}
+.doc h5 {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  letter-spacing: -1px;
+  margin-bottom: 5px;
+}
+.doc .well ul {
+  margin: 10px 0;
+}
+.doc ul ul li {
+  list-style: circle;
+  margin: 0 0 0 25px;
+}
+.doc li p {
+  margin: 0;
+}
+.doc .set2 li {
+  list-style: circle;
+  margin: 0 0 0 25px;
+}
+
+.doc .sen1 {
+  margin-bottom: 20px;
+}
+
+.doc table {
+  font-size: 13px;
+}
+
+
+
+
+
+
+
+/* ---------------------------
+=forIE
+--------------------------- */
+
+.forIE {
+  margin: 0;
+  padding: 0;
+}
+.forIE .alert {
+  margin: 0;
+  font-size: 12px;
+}
+
+
+.forIEPageWrap {
+  background: #00c0f0;
+  color: #fff;
+  padding: 10px 0 50px;
+}
+
+.forIEAnc {
+  margin: 0 auto;
+  text-align: center;
+}
+.forIEAnc h3 {
+  font-size: 24px;
+  font-weight: 300;
+  letter-spacing: -1px;
+  line-height: 1.4;
+}
+.forIEAnc h3 strong {
+  font-size: 28px;
+  font-weight: 300;
+}
+.forIEAnc .btn {
+  font-weight: 600;
+}
+
+.forIEAnc .sampleMockup {
+  padding: 30px 0 0;
+}
+.forIEAnc .sampleMockup img {
+  width: 300px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 991px) {
+
+}
+
+@media (max-width: 767px) {
+  
+  /* mobile safari input 모양 변경 금지 */
+  input.form-control {
+    -webkit-appearance: none;
+  }
+  
+  /* 모바일에서는 헤더가 항상 fixed 이므로 */
+  body {
+    padding-top: 70px;
+  }
+  /* 서랍이 열리면 높이를 고정 오버플로우 히든 */
+  body.showMenu {
+    height: 100%;
+    overflow: hidden;
+  }
+  body.showMenu .wrap {
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .wrap:after { 
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    background: rgba(0,0,0,0.5);
+    content: '';
+    opacity: 0;
+    transition: opacity 0.5s, width 0.1s 0.5s, height 0.1s 0.5s;
+  }
+  body.showMenu .wrap:after {
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    transition: opacity 0.5s;
+    z-index: 200;
+  }
+  /* 모바일에서는 body 에 padding 이 있으므로 */
+  .mapPage .wrap {
+    padding-top: 0;
+  }
+  /* 모바일에서는 sns 링크를 노출하지 않습니다 */
+  .snsTopLinks {
+    display: none;
+  }
+  /* 햄버거 버튼을 항상 보입니다 */
+  .nav-toggle {
+    display: block;
+  }
+  .nav-toggle span, .nav-toggle span:before, .nav-toggle span:after {
+    background: #fff;
+  }
+  
+  /* GNB 는 파랑색 배경으로 항상 상단에 고정합니다 */
+  .gnb {
+    top: 0;
+    left: 0;
+    position: fixed;
+    width: 100%;
+    z-index: 999;
+    background: #00c0f0;
+    border: 0 none;
+    box-shadow: none;
+    padding-left: 15px;
+  }
+  /* 서랍이 열렸을때 왼쪽으로 당깁니다 */
+  .showMenu .gnb {
+    left: -260px;
+  }
+  /* 파랑색 로고를 숨기고 하얀색 로고를 보입니다. */
+  h1.logo a {
+    display: none;
+  }
+  h1.logo .forMobile {
+    display: block;
+  }
+  /* 메뉴는 숨기고, 우측 화면 밖에 둡니다 */
+  .menu {
+    display: none;
+    position: fixed;
+    z-index: 1001;    
+    right: 0;
+    top: 0;
+    width: 270px;
+    padding: 10px;
+    background: #0d1f35;
+    color:#fff;
+    transform: translate3d(-270px,0, 0px);
+    transition: transform 0.3s;
+  }
+  /* 메뉴가 열리면 화면에 보입니다 */
+  .showMenu .menu {
+    display: block;
+    transition-delay: 0.1s;
+    transform: translate3d(0px, 0px, 0);
+    overflow-y:auto;
+    height: 100%;
+  }
+  .menu li {
+     float: none;
+  }
+  .menu li.forMobile {
+    display: block;
+  }
+  .menu li.forMobile.csCenter {
+    margin-top: 20px;
+  }
+  .menu li a {
+    color: #fff;
+    border: 0 none;
+    border-bottom: 1px solid #253B57;
+    border-radius: 0;
+    font-size: 14px;
+    padding: 20px;
+  }
+  .gnb.collapsed .menu li a {
+    padding: 8px 15px;
+  }
+  .menu li a:hover,
+  .menu li a.current {
+    border: 0 none;
+    border-bottom: 1px solid #253B57;
+    color: #00BFF0;
+  }
+  .menu li.csCenter a {
+    width: 100%;
+    border: 1px solid #253B57;
+    border-radius: 3px;
+    margin: 0 0 10px;
+    padding: 10px 0;
+    text-align: center;
+  }
+  .menu li.csCenter a span {
+    font-size: 12px;
+  }
+  .menu li.csCenter a i {
+    margin: 0 2px 0 5px;
+    font-size: 16px;
+    vertical-align: middle;
+  }
+  
+  .menu li.profile {
+    padding: 10px 0;
+    text-align: center;
+  }
+  .menu li.profile a.userProfile {
+    border: 0 none;
+    padding: 10px;
+  }
+  .menu li.profile img {
+    width: 120px;
+    height: 120px;
+    border: 4px solid #253B57;
+    border-radius: 50%;
+  }
+  .menu li.profile strong {
+    display: block;
+    font-size: 14px;
+    font-weight: 400;
+  }
+  .menu li.profile em {
+    display: block;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 500;
+  }
+  .menu li.profile .goMyPage {
+    padding: 4px 20px;
+    border-radius: 50px;
+    background: #fff;
+    font-size: 12px;
+    letter-spacing: -1px;
+    display: inline-block;
+    color: #00c0f0;
+    margin: 10px 0 0;
+  }
+  .menu li.sns {
+    margin: 30px 0 10px;
+  }
+  .menu li.sns a {
+    border: 0 none;
+    width: 40px;
+    height: 40px;
+    line-height: 38px;
+    padding: 0;
+    text-align: center;
+    border-radius: 50%;
+    display: inline-block;
+    font-size: 18px;
+    background: #fff;
+    color: #3b5998;
+  }
+  .menu li.userProfile {
+    display: none;
+  }
+  .showMenu .wrap {
+    transition: transform 0.1s;
+    transition-delay: 0.1s;
+    transform: translate3d(-270px,0,0);
+  }
+  .mapPage.showMenu .wrap {
+    transform: translate3d(-270px,0,0);
+  }
+  
+  
+  .menu li .selectedPrice {
+    background: #fff;
+    width: auto;
+
+    border: 0 none;
+    border-radius: 0;
+    margin: 10px -10px;
+  }
+  .menu li .selectedPrice h5 {
+    margin: 0;
+  }
+  
+  .menu li .selectedPrice .btnPass {
+    text-align: center;
+    letter-spacing: -1px;
+    font-size: 14px;
+    border-radius: 50px;
+  }
+  .menu li .selectedPrice .btnPass img {
+    width: 40px;
+    height: 40px;
+    display: block;
+    margin: 0 auto 5px;
+  }
+  .menu li .selectedPrice .applyMembership {
+    margin: 0;
+  }
+  .menu li .selectedPrice .applyMembership a {
+    display: block;
+    padding: 8px 5px;
+    border: 0 none;
+    color: #00c0f0;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    font-size: 12px;
+    margin: 10px 0 0;
+  }
+  
+  
+  
+  .subAlt {
+    margin-top: -70px;
+    padding: 25px 0;
+    height: 80px;
+  }
+
+  .webAppLoading,
+  .webAppWrap {
+    margin-top: -17px;
+    padding-top: 20px;
+  }
+  
+  
+  .mastHead {
+    height: 360px;
+    background-attachment: scroll;
+    margin-top: -60px;
+  }
+  .mastHead .overlay {
+    padding-top: 250px;
+  }
+  .findCenter {
+    font-size: 13px;
+  }
+  .about {
+    padding: 20px 0;
+  }
+  h2.mainSlogan {
+    font-size: 40px;
+    line-height: 1.2;
+    margin-bottom: 60px;
+  }
+  h2.mainSlogan small {
+    font-size: 16px;
+    
+  }
+  .card .top {
+    height: 80px;
+  }
+  .card .top .dl {
+    display: none;
+  }
+  .card .bottom img {
+    width: 170px;
+    height: 31px;
+  }
+  .card {
+    min-height: 200px;
+  }
+  .cardshadow {
+    height: 190px;
+  }
+  .lead h3 {
+    font-size: 18px;
+  }
+  .lead h3 b {
+    font-size: 40px;
+  }
+  .lead h3 span {
+    display: inline;
+    
+  }
+  .statCntWrap {
+    margin: 30px 0;
+  }
+  .statCnt {
+    font-size: 18px;
+  }
+  .statCnt b {
+    font-size: 48px;
+  }
+  .illust {
+    text-align: center;
+  }
+  .illust p {
+    font-size: 15px;
+  }
+  .illust p span {
+    display: inline;
+  }
+  .priceWrap {
+    padding: 40px 0;
+    min-height: 0;
+    background-attachment: scroll;
+  }
+  .priceWrap h3 {
+    font-size: 30px;
+  }
+  .priceWrap h3 small {
+    font-size: 48px;
+  }
+  .priceWrap h4 {
+    line-height: 1.4;
+  }
+  .priceTag {
+    min-height: 0;
+    margin-bottom: 20px;
+  }
+  .priceHeading h6 {
+    margin: 10px 0 0;
+  }
+  .priceBody {
+    padding: 10px 0;
+  }
+  .priceBody .desc {
+    margin-top: 20px;
+    min-height: 0;
+  }
+  .priceAdditionalInfo {
+    margin-top: 0;
+  }
+  .waitplz {
+    padding: 20px;
+  }
+  .customerCenter h5 {
+    margin-top: 40px;
+  }
+  .customerCenter b {
+    margin-top: 20px;
+  }
+  
+  
+  
+  .centerListBox {
+    width: 100%;
+  }
+  .filter {
+    width: 100%; 
+  }
+  .centerDetailViewBox {
+    width: 100%;
+    max-width: 100%;
+    bottom: 0;
+    left: 0;
+    top: auto;
+    z-index: 300;
+  }
+  .mapWrap {
+    top: 0;
+    left: 0;
+    right: auto;
+    width: 100%;
+    z-index: 80;
+    opacity: 0;
+    
+    visibility: hidden; /* 오래된 안드로이드 브라우저 지원 */
+  }
+  body.showMap .mapWrap {
+    visibility: visible;
+    opacity: 1;
+    z-index: 200;
+  }
+  .resultInfo .btn_mapView {
+    display: block;
+    margin-top: 20px;
+  }
+  .passTypeSelect {
+    width: 100%;
+    overflow: hidden;
+  }
+  .passTypeSelect .forMobile {
+    display: block;
+  }
+  .passTypeSelect .forMobile a {
+    background: #fff;
+    color: #00c0f0;
+    border: 1px solid #00c0f0;
+    padding: 9px 0 0;
+    display: block;
+    text-align: center;
+    float: left;
+    width: 20%;
+    height: 40px;
+  }
+  .passTypeSelect {
+    opacity: 0;
+    z-index: 80;
+  }
+  body.showMap .passTypeSelect {
+    opacity: 1;
+    z-index: 500;
+    left: 0;
+    top: 80px;
+    width: 100%;
+  }
+  .passTypeSelect .btn-primary {
+    width: 20%;
+    height: 40px;
+    padding: 10px 0;
+  }
+  .passTypeSelect .btn + .btn {
+    margin: 0;
+  }
+  
+  
+  
+  .cHeading .info .goThisCenterHome {
+    display:block;
+    width: 100%;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 14px;
+  }
+  
+  /* center Detail */
+  .centerDetailWrap .btnHoverCircle {
+    position: static;
+    border-radius: 4px;
+    width: 100%;
+    height: auto;
+    padding: 20px 0;
+    margin: -10px 0 40px;
+    border: 0 none;
+    box-shadow: none;
+  }
+  .centerDetailWrap .btnHoverCircle span {
+    display: inline;
+  }
+  
+  
+  .page-header h2 {
+    font-size: 30px;
+    font-weight: 300;
+  }
+  .page-header h2 span {
+    display: inline-block;
+  }
+  /* 결제 */
+  .tabAcoountType select.form-control {
+    display: block;
+    width: 100%;
+    margin-bottom: 5px;
+  }
+  .tabAcoountType .birthday select.form-control {
+    width: 26%;
+    display: inline;
+  }
+  .tabAcoountType .form-control {
+    width: 29%;
+  }
+  .tabAcoountType .phoneNumber {
+    width: 100%;
+  }
+  .payAgreement .agreementBox label {
+    display: block;
+    margin: 10px 0;
+  }
+  .paymentSubmitLine button {
+    display: block;
+    width: 100%;
+  }
+  
+  /* 1:1 문의 */
+  .accordionList .panel-body {
+    padding: 15px;
+  }
+  
+  .form-horizontal .checkbox,
+  .form-horizontal .checkbox-inline,
+  .form-horizontal .radio,
+  .form-horizontal .radio-inline {
+    border: 1px solid #ddd;
+    background: #f5f5f5;
+    padding: 7px 12px 7px 27px;
+    margin: 0 0 3px 3px;
+    border-radius: 2px;
+  }
+  
+  /* 마이페이지 */
+  .userInfo .selectedPrice .cardBottom p {
+    overflow: hidden;
+  }
+  .userInfo .selectedPrice .cardBottom p strong {
+    letter-spacing: -1px;
+    opacity: 0.8;
+    width: 30%;
+    text-align: right;
+    padding-right: 0;
+    margin-right: 10px;
+    display: inline-block;
+  }
+  .userInfo .selectedPrice .cardBottom p span.cnt, 
+  .userInfo .selectedPrice .cardBottom p span.term {
+    font-size: 16px;
+  }
+
+}
+
+
+@media (max-width: 479px) {
+  .col-xs-6 {
+    width: 100%;
+  }
+}
+
+
+
+
