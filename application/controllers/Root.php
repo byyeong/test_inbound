@@ -13,10 +13,6 @@ class Root extends CI_Controller {
 	
 	public function __construct() {
         parent::__construct();
-  
-        $this->load->helper('url');
-        echo "test";
-        // $this->load->model('mvc_sample/blog_basic_model');
     }
 
 	public function index()

@@ -49,6 +49,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
+
+$route['default_controller'] = 'root';
+$route['404_override'] = '';
+$route['translate_uri_dashes'] = FALSE;
+
 $route['login'] =                       'registe/login';                    //로그인
 $route['identify'] =                    'registe/identify';                 //비밀번호 찾기
 $route['partner'] =                     'center/partner';                   //제휴 상담 요청
@@ -62,8 +67,3 @@ $route['notice'] =                      'board/index';                     //고
 $route['qna'] =                         'board/qna';                        //고객센터-자주 묻는 질문
 $route['direct'] =                      'board/direct';                     //고객센터-1:1
  
-
-
-$route['default_controller'] = 'root';
-$route['404_override'] = '';
-$route['translate_uri_dashes'] = FALSE;
